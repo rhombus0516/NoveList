@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   scope module: :user do
   root to: "homes#top"
+  resources :books, only: [:new, :index, :show, :edit]
   end
     
   devise_scope :user do
