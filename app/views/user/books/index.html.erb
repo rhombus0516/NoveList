@@ -3,4 +3,8 @@
     <p><%= image_tag book.get_image(100,100) %></p>
     <p><%= book.title %></p>
     <p><%= book.user.name %></p>
+    <p><% if book.user == current_user %>
+        <%= link_to "削除", book_path(book), method: :delete %>
+        <% end %>
+    </p>
 <% end %>    
