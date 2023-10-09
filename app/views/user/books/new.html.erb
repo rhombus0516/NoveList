@@ -4,6 +4,8 @@
         <%= f.text_field :title %>
     <h4>本文</h4>
         <%= f.text_area :body %>
-        <%= f.submit '投稿する' %>
+    <h4>表紙画像</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+        <%= f.submit '投稿する' %>    
 <% end %>        
     
