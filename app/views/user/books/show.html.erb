@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <%= image_tag @books.get_image(100,100) %>
+        <%= @books.title %>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <%= @books.body %>
+            </td>
+        </tr>
+        <tr>
+            <td><% if @books.user == current_user %>
+                    <%= link_to "削除", book_path(@books), method: :delete %>
+                <% end %>
+            </td>
+        </tr>
+    </tbody>
+</table>    
