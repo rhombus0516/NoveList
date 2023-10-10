@@ -1,0 +1,16 @@
+<div>
+    <h3><%= @user.name %></h3>
+    <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+
+<table>
+    <tbody>
+        <tr>
+            <% @books.each do |book| %>
+                <td><%= image_tag book.get_image(100,100) %></td>
+                <td><%= link_to book.title, book_path(book.id) %></td>
+                <td><%= book.user.name %></td>
+            <% end %>
+        </tr>
+    </tbody>
+</table>

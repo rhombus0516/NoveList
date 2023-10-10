@@ -16,8 +16,9 @@
             <% end %> 
             </li>
             <li>
-            <%= link_to books_path, class: 'nav-link text-light' do %>
-              投稿一覧
+            <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+            </li>
+              マイページ
             <% end %> 
             </li>
             <li>
