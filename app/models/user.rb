@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :book, dependent: :destroy
-         
+  
+  #ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
   
   def self.guest

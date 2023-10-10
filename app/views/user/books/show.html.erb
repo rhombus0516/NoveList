@@ -10,7 +10,8 @@
             </td>
         </tr>
         <tr>
-            <td><% if @books.user == current_user %>
+            <td>
+                <% if @books.user == current_user %>
                     <%= link_to "削除", book_path(@books), method: :delete %>
                 <% end %>
             </td>
