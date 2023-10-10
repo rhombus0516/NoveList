@@ -1,20 +1,18 @@
 <table>
     <thead>
-        <%= image_tag @books.get_image(100,100) %>
-        <%= @books.title %>
+        <%= image_tag @book.get_image(100,100) %>
+        <%= @book.title %>
     </thead>
     <tbody>
         <tr>
             <td>
-                <%= @books.body %>
+                <%= @book.body %>
             </td>
         </tr>
         <tr>
-            <td>
-                <% if @books.user == current_user %>
-                    <%= link_to "削除", book_path(@books), method: :delete %>
-                <% end %>
-            </td>
+             <% if @book.user == current_user %>
+                    <td><%= link_to "編集する", edit_book_path(@book) %></td>
+            <% end %>
         </tr>
     </tbody>
 </table>    
