@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   
   scope module: :user do
   root to: "homes#top"
-  resources :books, only: [:new, :index, :show, :edit, :create, :destroy]
+  resources :books, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+  patch 'books/:id' => 'user/books#update', as: 'update_book'
+  delete 'books/:id'=> 'user/books#destroy', as: 'destroy_book'  
   end
     
   devise_scope :user do
