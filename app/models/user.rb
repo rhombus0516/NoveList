@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :book, dependent: :destroy
+  has_one_attached :profile_image
   
   #ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
@@ -14,5 +15,9 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end  
-  end     
+  end
+  
+  #ユーザー画像
+  
 end
+
