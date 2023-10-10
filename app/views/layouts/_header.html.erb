@@ -10,9 +10,21 @@
         <!-- ログイン済み -->
       <% if user_signed_in? %>
           <li class="nav-item active">
+            <li>
+            <%= link_to new_book_path, class: 'nav-link text-light' do %>
+              新規投稿
+            <% end %> 
+            </li>
+            <li>
+            <%= link_to books_path, class: 'nav-link text-light' do %>
+              投稿一覧
+            <% end %> 
+            </li>
+            <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
               ログアウト
-            <% end %> 
+            <% end %>
+            </li>
        <% else %>
            <!-- ログアウト後 -->
           <li class="nav-item">
