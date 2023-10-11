@@ -13,7 +13,7 @@
             <% end %>
         </tr>
         <tr>
-            <p> <% if @user == current_user %>
+            <p> <% if @user == current_user && @user.email != "guest@example.com" %>
                 <%= link_to "プロフィール編集", edit_user_path(@user) %>
                 <% end %>
             </p>
@@ -21,6 +21,6 @@
     </tbody>
 </table>
 
-<% if @user = current_user %>
+<% if @user = current_user && @user.email != "guest@example.com" %>
     <%= link_to "退会する", user_path(@user), method: :delete %>
 <% end %>    

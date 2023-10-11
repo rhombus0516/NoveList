@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   #ゲストログイン
+  
   GUEST_USER_EMAIL = "guest@example.com"
   
   def self.guest
@@ -16,6 +17,12 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end  
   end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+  
+
   
   #ユーザー画像
   def get_profile_image(width,height)

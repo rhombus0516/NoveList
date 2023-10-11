@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
-  
-  def guest_sigin_in
+    
+  #GUEST_USER_EMAIL = "guest@example.com"
+
+  def guest_sign_in
     user = User.guest
-    sigin_in user
-    redirect_to user_path(user),notice: "guestuserでログインしました。"
-  end  
-    
-    
+    sign_in user
+    redirect_to user_path(user), notice: "guestuserでログインしました。"
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
