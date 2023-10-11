@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   
   scope module: :user do
   root to: "homes#top"
-  resources :books, only: [:new, :index, :show, :edit, :create, :update, :destroy]
-  resources :users, only: [:show, :edit, :update, :destroy]
+    resources :books, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+    resources :users, only: [:show, :edit, :update, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
   
     

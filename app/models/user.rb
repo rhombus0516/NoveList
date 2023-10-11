@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :book, dependent: :destroy
   has_one_attached :profile_image
   
+  has_many :favoriites, dependent: :destroy
+  
   #ゲストログイン
   
   GUEST_USER_EMAIL = "guest@example.com"
