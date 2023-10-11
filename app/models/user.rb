@@ -22,8 +22,6 @@ class User < ApplicationRecord
     email == GUEST_USER_EMAIL
   end
   
-
-  
   #ユーザー画像
   def get_profile_image(width,height)
     unless profile_image.attached?

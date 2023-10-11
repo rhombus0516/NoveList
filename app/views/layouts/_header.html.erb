@@ -11,17 +11,15 @@
       <% if user_signed_in? %>
           <li class="nav-item active">
             <li>
-            <%= link_to new_book_path, class: 'nav-link text-light' do %>
-              新規投稿
+            <%= link_to books_path, class: 'nav-link text-light' do %>
+              本棚
             <% end %> 
-            </li>
+            </li>          
             <li>
             <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
-            </li>
               マイページ
             <% end %> 
             </li>
-            <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
               ログアウト
             <% end %>
