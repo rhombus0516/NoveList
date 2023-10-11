@@ -1,13 +1,6 @@
-<%= form_with model: @book, local: true do |f| %>
-    <h4>タイトル</h4>
-       <%= f.text_field :title %>
-    <h4>本文</h4>   
-        <%= f.text_area :body %>
-    <h4>表紙画像</h4>
-        <%= f.file_field :image, accept: "image/*" %>
-        <%= f.submit '保存' %></td>
-<% end %>
-
+<!-- フォーム -->
+<h4>作品編集</h4>
+<%= render 'user/books/form', book: @book%>
 <!-- 削除ボタン -->
 <% if @book.user == current_user %>
     <%= link_to "削除", book_path(@book), method: :delete %>

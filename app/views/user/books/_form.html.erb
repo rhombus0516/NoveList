@@ -1,0 +1,9 @@
+    <%= form_with model: book,local: true do |f| %>
+        <h6>タイトル</h6>
+            <%= f.text_field :title %>
+        <h6>本文</h6>
+            <%= f.text_area :body %>
+        <h6>表紙画像</h6>
+            <%= f.file_field :image, accept: "image/*" %>
+            <%= f.submit '投稿する' %>    
+    <% end %>
