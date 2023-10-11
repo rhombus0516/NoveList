@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :book, dependent: :destroy
   has_one_attached :profile_image
   
-  has_many :favoriites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   #ゲストログイン
   
