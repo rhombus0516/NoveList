@@ -2,15 +2,15 @@
     <div class="row">
         <div class="col-lg-2"></div>
             <div class= "col-lg-8">
-<%= form_with model: book,local: true do |f| %>
-    <h6>タイトル</h6>
-        <%= f.text_field :title, placeholder: "タイトルを入力", size: "100" %>
-    <h6>本文</h6>
-        <%= f.text_area :body, placeholder: "本文",  class: "w-100 vh-100" %>
-    <h6>表紙画像</h6>
-        <%= f.file_field :image, accept: "image/*" %></br>
-        <%= f.submit '投稿する', class: "btn btn-info btn-sm" %>    
-<% end %>
+                <%= form_with model: book,local: true do |f| %>
+                    <h6>タイトル</h6>
+                        <%= f.text_field :title, placeholder: "タイトルを入力", size: "100" %>
+                    <h6>本文</h6>
+                        <%= f.text_area :body, placeholder: "本文",  class: "w-100 vh-100" %>
+                    <h6>表紙画像</h6>
+                        <%= f.file_field :image, accept: "image/*" %></br>
+                        <%= f.submit '投稿する', class: "btn btn-info btn-sm" %>    
+                <% end %>
             </div>
         <div class="col-lg-2"></div>
     </div>
