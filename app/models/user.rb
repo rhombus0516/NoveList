@@ -5,9 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :book, dependent: :destroy
-  has_one_attached :profile_image
   
+  #ユーザー画像
+  has_one_attached :profile_image
+
+  #いいね
   has_many :favorites, dependent: :destroy
+  
+  #コメント
+  has_many :book_comments, dependent: :destroy
+  
+  validates :comment, presence: true
   
   #ゲストログイン
   

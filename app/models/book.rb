@@ -2,7 +2,12 @@ class Book < ApplicationRecord
 
     has_one_attached :image
     belongs_to :user
+    
+    #いいね
     has_many :favorites, dependent: :destroy
+    
+    #コメント
+    has_many :book_comments, dependent: :destroy
     
     #表紙画像
     def get_image(width,height)
