@@ -15,7 +15,7 @@ class User < ApplicationRecord
   #コメント
   has_many :book_comments, dependent: :destroy
   
-  validates :comment, presence: true
+  #validates :comment, presence: true
   
   #ゲストログイン
   
