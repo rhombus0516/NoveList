@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   root to: "homes#top"
     resources :books, only: [:new, :index, :show, :edit, :create, :update, :destroy]
     resources :users, only: [:show, :edit, :update, :destroy] do
-    resource :favorites, only: [:create, :destroy]
-  end
+      resources :book_comments, only: [:create, :destroy]  
+      resource :favorites, only: [:create, :destroy]
+    end
   end
   
     
