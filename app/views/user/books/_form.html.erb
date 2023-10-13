@@ -8,8 +8,19 @@
                     <h6>本文</h6>
                         <%= f.text_area :body, placeholder: "本文",  class: "w-100 vh-100" %>
                     <h6>表紙画像</h6>
-                        <%= f.file_field :image, accept: "image/*" %></br>
-                        <%= f.submit '投稿する', class: "btn btn-info btn-sm" %>    
+                        <%= f.file_field :image, accept: "image/*" %>
+                    <div class='form-group'>
+                    <h6>タグ</h6>    
+                        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                    <div class='form-check'>
+                            <%= tag.label class: 'form-check-label' do %>
+                                <%= tag.check_box class: 'form-check-input' %>
+                                <%= tag.text %>
+                            <% end %>
+                            </div>
+                        <% end %>
+                        <%= f.submit '投稿する', class: "btn btn-info btn-sm" %> 
+                    </div>    
                 <% end %>
             </div>
         <div class="col-lg-2"></div>
