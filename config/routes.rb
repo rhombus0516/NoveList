@@ -23,11 +23,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
   end
   
-  namespace :user do
-    resources :tags, only: [:index, :create, :edit, :update, :destroy]
-  end
-  
-    
   devise_scope :user do
     post "user/guest_sign_in", to: "user/sessions#guest_sign_in"
   end

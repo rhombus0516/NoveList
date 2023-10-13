@@ -15,8 +15,6 @@ class User < ApplicationRecord
   #コメント
   has_many :book_comments, dependent: :destroy
   
-  #validates :comment, presence: true
-  
   #ゲストログイン
   
   GUEST_USER_EMAIL = "guest@example.com"
