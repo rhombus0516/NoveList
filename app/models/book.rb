@@ -38,8 +38,14 @@ class Book < ApplicationRecord
         elsif search == "partial_match"
           @book = Book.where("title LIKE?","%#{word}%")
         else
-          @book = Book.all
+          @book = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
         end
+        if params[:keyword]
+          @book = @book.search(params[:keyword]).page(params[:page])
+        else
+          @book = @book.page(params[:page])
+        end
+          @keyword = params[:keyword]
     end
-
+    
 end

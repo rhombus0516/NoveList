@@ -7,6 +7,16 @@ class User::BooksController < ApplicationController
 
     def index
         @books = Book.all
+
+        if params[:tag_ids]
+            @books = []
+            params[:tag_ids].each do |key, value|
+                if value == "1"
+                    tag_books = Tag.find_by(name: key).books
+                  @books = @books.empty? ? tag_books : @books & tag_books
+                end
+             end
+        end
     end
 
     def show
@@ -42,10 +52,10 @@ class User::BooksController < ApplicationController
     def book_params
         params.require(:book).permit(:title, :body, :image, tag_ids:[])
     end
-    
+
     def is_matching_login_user
         book = Book.find(params[:id])
-        unless book.id == current_user.id
+        unless book.user.id == current_user.id
           redirect_to books_path
         end
     end

@@ -1,13 +1,11 @@
-<table >
-    <thead>
-        <%= image_tag @book.get_image(100,100) %>
-        <%= @book.title %>
-    </thead>
+<table>
     <tbody>
         <tr>
-            <td>
-                <%= @book.body %>
-            </td>
+            <td><%= image_tag @book.get_image(100,100) %></td>
+            <td><%= @book.title %></td>
+        </tr>
+        <tr>
+            <td><%= @book.body %></td>
         </tr>
         <% @book.tags.each do |tag| %>
             <td><%= tag.name %></td>
