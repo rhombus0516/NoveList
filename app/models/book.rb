@@ -40,12 +40,5 @@ class Book < ApplicationRecord
         else
           @book = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
         end
-        if params[:keyword]
-          @book = @book.search(params[:keyword]).page(params[:page])
-        else
-          @book = @book.page(params[:page])
-        end
-          @keyword = params[:keyword]
-    end
-    
+    end    
 end
