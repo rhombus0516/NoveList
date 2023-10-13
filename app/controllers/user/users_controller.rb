@@ -3,6 +3,11 @@ class User::UsersController < ApplicationController
     before_action :ensure_guest_user, only: [:edit]
     before_action :is_matching_login_user, only: [:edit, :update]
     
+    def index
+        @users = User.all
+        @book = Book.new
+    end
+    
     def show
         @user = User.find(params[:id])
         @books = @user.book
@@ -28,7 +33,7 @@ class User::UsersController < ApplicationController
     
     def follows
         user = User.find(params[:id])
-        @users = user.following_users
+        @user = user.following_users
     end
     
     def followers

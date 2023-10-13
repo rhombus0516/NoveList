@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :book_comments, only: [:create, :destroy] 
       resource :favorites, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
       member do
         get :follows, :followers
       end
