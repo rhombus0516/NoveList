@@ -13,6 +13,9 @@ class Book < ApplicationRecord
     has_many :book_tag_relations, dependent: :destroy
     has_many :tags, through: :book_tag_relations, dependent: :destroy
     
+    validates :title, presence: true
+    validates :body, presence: true
+    
     #表紙画像
     def get_image(width,height)
         unless image.attached?
