@@ -6,6 +6,8 @@ class User::UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @books = @user.book
+        @following_users = @user.following_users
+        @follower_users = @user.follower_users
     end
     
     def edit
@@ -22,6 +24,16 @@ class User::UsersController < ApplicationController
         @user =User.find(params[:id])
         @user.destroy
         redirect_to root_path
+    end
+    
+    def follows
+        user = User.find(params[:id])
+        @users = user.following_users
+    end
+    
+    def followers
+        user = User.find(params[:id])
+        @user = user.follower_users
     end
     
       private

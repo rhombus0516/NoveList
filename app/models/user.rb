@@ -15,6 +15,30 @@ class User < ApplicationRecord
   #コメント
   has_many :book_comments, dependent: :destroy
   
+  #フォロー
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  
+  #フォロワー
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  
+  has_many :following_users, through: :followers, source: :followed
+  has_many :follower_users, through: :followeds, source: :follower
+  
+  #フォローしたときの処理
+  def follow(user_id)
+    followers.create(followed_id: user_id)
+  end
+  
+  #フォローを外すときの処理
+  def unfollow(user_id)
+    followers.find_by(followed_id: user_id).destroy
+  end
+  
+  #フォローしているか確認
+  def following?(user)
+    following_users.include?(user)
+  end
+  
   #ゲストログイン
   
   GUEST_USER_EMAIL = "guest@example.com"
