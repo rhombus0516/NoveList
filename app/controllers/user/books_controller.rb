@@ -9,12 +9,12 @@ class User::BooksController < ApplicationController
         @books = Book.all
         #検索できない
         @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
+        #新規タグ作成
         if params[:tag]
          Tag.create(name: params[:tag])
         end
-
     end
-    
+
     def show
         @book = Book.find(params[:id])
         @book_comment = BookComment.new
@@ -31,7 +31,7 @@ class User::BooksController < ApplicationController
             redirect_to books_path
         else
             render :new
-        end    
+        end
     end
 
     def destroy
@@ -46,7 +46,7 @@ class User::BooksController < ApplicationController
             redirect_to book_path(book.id)
         else
             render :edit
-        end    
+        end
     end
 
     private
