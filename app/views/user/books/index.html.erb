@@ -1,8 +1,19 @@
 <%= render 'user/books/index', book: @book %> 
 
-<%= form_tag({controller:"books",action:"index"}, method: :get) do %>
-    <% Tag.all.each do |t| %>
-        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+<% if admin_signed_in? %>
+    <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
+        <%= text_field_tag :tag %>
+        <%= submit_tag 'タグを追加' %>
     <% end %>
-    <%= submit_tag '検索' %>
+
+<% else %>
+    <%= form_tag books_path, method: :get, class: 'boards__searchForm' do %>
+          <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                         {
+                           prompt: 'タグで絞り込み検索',
+                           onchange: 'submit(this.form);'
+                         }
+      %>
+    <% end %>
 <% end %>
+

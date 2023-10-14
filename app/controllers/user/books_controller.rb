@@ -7,18 +7,14 @@ class User::BooksController < ApplicationController
 
     def index
         @books = Book.all
-    #検索できない
-        if params[:tag_ids]
-            @books = []
-            params[:tag_ids].each do |key, value|
-                if value == "1"
-                    tag_books = Tag.find_by(name: key).books
-                  @books = @books.empty? ? tag_books : @books & tag_books
-                end
-             end
+        #検索できない
+        @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
+        if params[:tag]
+         Tag.create(name: params[:tag])
         end
-    end
 
+    end
+    
     def show
         @book = Book.find(params[:id])
         @book_comment = BookComment.new

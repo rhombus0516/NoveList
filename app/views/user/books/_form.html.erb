@@ -18,7 +18,7 @@
                     <h6>表紙画像</h6>
                         <%= f.file_field :image, accept: "image/*" %>
                     <div class='form-group'>
-                    <h6>タグ</h6>    
+                    <h6>タグ</h6>
                         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
                     <div class='form-check'>
                             <%= tag.label class: 'form-check-label' do %>
