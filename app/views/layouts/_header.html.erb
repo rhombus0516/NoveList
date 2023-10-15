@@ -20,6 +20,11 @@
               ユーザ－
             <% end %>
             </li>
+            <li>
+              <li><%= link_to liked_posts_user_path(current_user), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>
+              いいねした投稿
+              <% end %></li>
+            </li>
             <li class="nav-item">
             <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
               マイページ

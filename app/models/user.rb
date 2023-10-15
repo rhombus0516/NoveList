@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   #いいね
   has_many :favorites, dependent: :destroy
+  has_many :books, through: :favorites
   
   #コメント
   has_many :book_comments, dependent: :destroy

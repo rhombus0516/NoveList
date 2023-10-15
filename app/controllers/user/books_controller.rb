@@ -7,7 +7,7 @@ class User::BooksController < ApplicationController
 
     def index
         @books = Book.all
-        #検索できない
+        #タグ検索
         @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
         #新規タグ作成
         if params[:tag]

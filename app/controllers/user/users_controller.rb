@@ -41,6 +41,13 @@ class User::UsersController < ApplicationController
         @user = user.follower_users
     end
     
+        
+    def liked_posts
+        @liked_posts = Book.liked_posts(current_user)
+        @books = current_user.books
+    end    
+    
+    
       private
 
     def user_params

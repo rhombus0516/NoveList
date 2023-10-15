@@ -30,6 +30,13 @@ class Book < ApplicationRecord
         favorites.exists?(user_id: user.id)
     end
     
+    def self.liked_posts(user)
+      includes(:favorites)
+      .where(favorites: { user_id: user.id})
+      .order(created_at: :desc)
+    end
+    
+    
     # 検索方法分岐
     def self.looks(search, word)
         if search == "perfect_match"
