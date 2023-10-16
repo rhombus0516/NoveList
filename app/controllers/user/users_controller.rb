@@ -6,6 +6,7 @@ class User::UsersController < ApplicationController
     def index
         @users = User.all
         @book = Book.new
+        @books = Book.all
     end
     
     def show
@@ -46,7 +47,6 @@ class User::UsersController < ApplicationController
         @liked_posts = Book.liked_posts(current_user)
         @books = current_user.books
     end    
-    
     
       private
 

@@ -9,7 +9,8 @@
 Tag.create([
     { name: 'ホラー' },
     { name: 'ファンタジー' },
-    { name: 'コメディー'}
+    { name: 'コメディー'},
+    { name: 'その他'}
     ])
     
 Admin.create!(

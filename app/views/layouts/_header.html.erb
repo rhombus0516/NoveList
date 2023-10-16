@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <a class="navbar-brand">
-      <%= link_to books_path, class: 'nav-link text-light' do %>
+      <%= link_to root_path, class: 'nav-link text-light' do %>
       ロゴ
       <% end %>
     </a>
@@ -36,6 +36,11 @@
         <!-- 管理者 -->
       <% elsif admin_signed_in? %>
         <li class="nav-item">
+            <%= link_to books_path, class: 'nav-link text-light' do %><i class="fa-solid fa-book"></i>
+              本棚
+            <% end %>
+        </li>
+        <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %><i class="fa-solid fa-right-from-bracket"></i>
                 ログアウト
             <% end %>
@@ -45,7 +50,6 @@
             <%= link_to user_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %><i class="fa-solid fa-eye"></i>
                 ゲストログイン
             <% end %>
-
           </li>
           <li class="nav-item">
             <%= link_to new_user_registration_path, class: 'nav-link text-light' do %><i class="fa-solid fa-user-plus"></i>

@@ -1,4 +1,4 @@
-<%= render 'user/books/index', book: @book %> 
+<%= render 'user/books/index', book: @books %> 
 
 <% if admin_signed_in? %>
     <%= form_tag books_path, method: :get, class: 'boards__searchForm' do %>
