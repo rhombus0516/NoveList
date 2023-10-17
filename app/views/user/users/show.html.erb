@@ -20,6 +20,8 @@
     <%= link_to follows_user_path do %>
         <%= @user.followers.count %>
     <% end %>
+</div>
+<div>
     <h6>フォロワー</h6>
     <%= link_to followers_user_path do %>
         <%= @user.followeds.count %>
@@ -39,6 +41,8 @@
         </tr>
     </tbody>
 </table>
+
 <% unless @user.guest_user? %>
     <%= link_to "退会する", user_path(@user), method: :delete %>
-<% end %>    
+<% end %>
+   

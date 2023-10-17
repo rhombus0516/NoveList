@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-    before_action :authenticate_user!
+    #before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit]
     before_action :is_matching_login_user, only: [:edit, :update]
     
