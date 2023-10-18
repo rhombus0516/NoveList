@@ -3,6 +3,10 @@
         <tr>
             <td><%= image_tag @book.get_image(100,100) %></td>
             <td><%= @book.title %></td>
+            <td><%= link_to user_path(@user) do %>
+                <%= @user.name %>
+                <% end %>
+            </td>
         </tr>
         <tr>
             <td><%= @book.body %></td>
@@ -11,7 +15,7 @@
             <td><%= tag.name %></td>
         <% end %>
         <tr>
-            <td id="favorite_btn_<%= @book.id %>">
+            <td id="favorite_buttons_<%= @book.id %>">
                  <%= render "user/favorites/btn", book: @book %>
             </td>
         </tr>
