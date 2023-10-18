@@ -11,7 +11,9 @@
             <td><%= tag.name %></td>
         <% end %>
         <tr>
-            <td></td>
+            <td id="favorite_btn_<%= @book.id %>">
+                 <%= render "user/favorites/btn", book: @book %>
+            </td>
         </tr>
         <tr>
             <td><%= render "user/book_comments/form", book: @book, book_comment: @book_comment %></td>

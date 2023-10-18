@@ -11,7 +11,8 @@
                         <td><%= link_to book.title, book_path(book.id) %></td>
                         <td><%= book.user.name %></td>
                         <% if user_signed_in? %>
-                            <td><%= render "user/favorites/btn", book: book %></td>
+                            <td id= "favorite_buttons_<%= book.id %>">
+                                <%= render "user/favorites/btn", book: book %></td>
                         <% end %>
                         <% if user_signed_in? %>
                             <td>コメント数： <%= book.book_comments.count %></td>
