@@ -13,6 +13,7 @@ class User::BooksController < ApplicationController
         if params[:tag]
          Tag.create(name: params[:tag])
         end
+        @books = Book.published.order(created_at: :desc)
     end
 
     def show
