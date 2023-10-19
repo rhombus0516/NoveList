@@ -29,19 +29,19 @@ class User::BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         @book.user_id = current_user.id
-        
+
         if params[:draft].present?
             @book.status = :draft
         else
             @book.status = :published
-        end    
-            
+        end
+
         if @book.save
             if @book.draft?
-               redirect_to book_path(@book.id), notice: '下書きが保存されました。'
+                redirect_to book_path(@book.id), notice: '下書きが保存されました。'
             else
                 redirect_to books_path, notice: '投稿が公開されました'
-            end  
+            end
         else
             render :new
         end
@@ -55,23 +55,45 @@ class User::BooksController < ApplicationController
 
     def update
         @book = Book.find(params[:id])
-        
+
+        @book.assign_attributes(book_params)
+
         if params[:draft].present?
             @book.status = :draft
             notice_message = "下書きを保存しました。"
-            redirect_to book_path(@book.id)
+            redirect_path =  book_path(@book.id)
         elsif params[:unpublished].present?
-            @book.status =  :unpublished   
+            @book.status = :unpublished
             notice_message = "非公開にしました。"
-            redirect_to book_path(@book.id)
-        else
+            redirect_path = book_path(@book.id)
+        elsif params[:published].present?
             @book.status = :published
             notice_message = "公開しました。"
-            redirect_to books_path
-        end    
-            
-        if @book.update(book_params)
-            redirect_to book_path(@book.id)
+            redirect_path = books_path
+        end
+
+        # book_p = book_params
+        # if params[:draft].present?
+        #     book_p[:status] = :draft
+        # elsif params[:unpublished].present?
+        #     book_p[:status] = :unpublished
+        # elsif params[:published].present?
+        #     book_p[:status] = :published
+        # end
+
+        # if @book.update(book_p)
+        if @book.save
+            redirect_to redirect_path, notice: notice_message
+            # if params[:draft].present?
+            #     notice_message = "下書きを保存しました。"
+            #     redirect_to book_path(@book.id)
+            # elsif params[:unpublished].present?
+            #     notice_message = "非公開にしました。"
+            #     redirect_to book_path(@book.id)
+            # else
+            #     notice_message = "公開しました。"
+            #     redirect_to books_path
+            # end
         else
             render :edit
         end
