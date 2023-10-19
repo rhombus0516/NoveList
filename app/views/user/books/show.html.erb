@@ -19,9 +19,10 @@
                 <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
             <% end %>
         </tr>
-        <tr>
+        <tr><% if user_signed_in? %>
             <td id="favorite_buttons_<%= @book.id %>">
                  <%= render "user/favorites/btn", book: @book %>
+            <% end %>
             <td id="comment_count">
                 <%= render "user/book_comments/count", book: @book %>
             </td>
