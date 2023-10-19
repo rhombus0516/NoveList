@@ -18,7 +18,7 @@ class User::BooksController < ApplicationController
     def show
         @book = Book.find(params[:id])
         @book_comment = BookComment.new
-        @user = User.find(params[:id])
+        @user = @book.user
     end
 
     def edit
@@ -28,8 +28,19 @@ class User::BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         @book.user_id = current_user.id
+        
+        if params[:draft].present?
+            @book.status = :draft
+        else
+            @book.status = :published
+        end    
+            
         if @book.save
-            redirect_to books_path
+            if @book.draft?
+               redirect_to book_path(@book.id), notice: '下書きが保存されました。'
+            else
+                redirect_to books_path, notice: '投稿が公開されました'
+            end  
         else
             render :new
         end
@@ -43,6 +54,21 @@ class User::BooksController < ApplicationController
 
     def update
         @book = Book.find(params[:id])
+        
+        if params[:draft].present?
+            @book.status = :draft
+            notice_message = "下書きを保存しました。"
+            redirect_to book_path(@book.id)
+        elsif params[:unpublished].present?
+            @book.status =  :unpublished   
+            notice_message = "非公開にしました。"
+            redirect_to book_path(@book.id)
+        else
+            @book.status = :published
+            notice_message = "公開しました。"
+            redirect_to books_path
+        end    
+            
         if @book.update(book_params)
             redirect_to book_path(@book.id)
         else
@@ -53,7 +79,7 @@ class User::BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :body, :image, tag_ids:[])
+        params.require(:book).permit(:title, :body, :image, :status, tag_ids:[])
     end
 
     def is_matching_login_user

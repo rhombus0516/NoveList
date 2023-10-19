@@ -50,5 +50,8 @@ class Book < ApplicationRecord
         else
           @book = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
         end
-    end    
+    end
+    
+    #enum 0:公開 1:下書き 2:非公開 
+    enum status: { published: 0, draft: 1,  unpublished: 2 }
 end
