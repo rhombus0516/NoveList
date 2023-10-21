@@ -65,35 +65,14 @@ class User::BooksController < ApplicationController
         elsif params[:unpublished].present?
             @book.status = :unpublished
             notice_message = "非公開にしました。"
-            redirect_path = book_path(@book.id)
+            redirect_path = books_path
         elsif params[:published].present?
             @book.status = :published
             notice_message = "公開しました。"
             redirect_path = books_path
         end
-
-        # book_p = book_params
-        # if params[:draft].present?
-        #     book_p[:status] = :draft
-        # elsif params[:unpublished].present?
-        #     book_p[:status] = :unpublished
-        # elsif params[:published].present?
-        #     book_p[:status] = :published
-        # end
-
-        # if @book.update(book_p)
         if @book.save
             redirect_to redirect_path, notice: notice_message
-            # if params[:draft].present?
-            #     notice_message = "下書きを保存しました。"
-            #     redirect_to book_path(@book.id)
-            # elsif params[:unpublished].present?
-            #     notice_message = "非公開にしました。"
-            #     redirect_to book_path(@book.id)
-            # else
-            #     notice_message = "公開しました。"
-            #     redirect_to books_path
-            # end
         else
             render :edit
         end
