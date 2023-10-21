@@ -1,44 +1,52 @@
-<% if book.errors.any? %>
-    <%= book.errors.count %>件のエラーが発生しました
-        <ul>
-            <% book.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-        </ul>
-<% end %>    
-<%= form_with model: book,local: true do |f| %>
-    <h6>タイトル</h6>
-        <%= f.text_field :title, placeholder: "タイトルを入力", size: "94" %>
-    <h6>本文</h6>
-        <%= f.text_area :body, placeholder: "本文",  class: "w-100 vh-100" %>
-    <h6>表紙画像</h6>
-        <%= f.file_field :image, accept: "image/*" %>
-    <div class='form-group'>
-    <h6>タグ</h6>
-        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class='form-check'>
-                <%= tag.label class: 'form-check-label' do %>
-                    <%= tag.check_box class: 'form-check-input' %>
-                    <%= tag.text %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <% if book.errors.any? %>
+                    <%= book.errors.count %>件のエラーが発生しました
+                        <ul>
+                            <% book.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                <% end %>    
+                <%= form_with model: book,local: true do |f| %>
+                    <h6>タイトル</h6>
+                        <%= f.text_field :title, placeholder: "タイトルを入力", size: "94" %>
+                    <h6>本文</h6>
+                        <%= f.text_area :body, placeholder: "本文",  class: "w-100 vh-100" %>
+                    <h6>表紙画像</h6>
+                        <%= f.file_field :image, accept: "image/*" %>
+                    <div class='form-group'>
+                    <h6>タグ</h6>
+                        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                            <div class='form-check'>
+                                <%= tag.label class: 'form-check-label' do %>
+                                    <%= tag.check_box class: 'form-check-input' %>
+                                    <%= tag.text %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="btn-group" role="group" id="buttonGroup">
+                      <% if @book.persisted? %>
+                        <% if @book.draft? %>
+                          <%= f.submit '下書き保存', id: 'draftButton', name: 'draft', class: "draft-btn" %>
+                          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
+                        <% elsif @book.unpublished? %>
+                          <%= f.submit '非公開にする', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
+                          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
+                        <% else %>
+                          <%= f.submit '非公開にする', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
+                          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
+                        <% end %>
+                      <% else %>
+                          <%= f.submit '下書き保存', id: 'draftButton', name: 'draft', class: "draft-btn" %>
+                          <%= f.submit '公開する', id: 'postButton', name: 'post', class: "submit-btn" %>
+                      <% end %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
+        <div class="col-md-2"></div>
     </div>
-    <div class="btn-group" role="group" id="buttonGroup">
-      <% if @book.persisted? %>
-        <% if @book.draft? %>
-          <%= f.submit '下書き保存', id: 'draftButton', name: 'draft', class: "draft-btn" %>
-          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
-        <% elsif @book.unpublished? %>
-          <%= f.submit '非公開にする', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
-          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
-        <% else %>
-          <%= f.submit '非公開にする', id: 'unpublishButton', name: 'unpublished', class: "unpublish-btn" %>
-          <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "submit-btn" %>
-        <% end %>
-      <% else %>
-          <%= f.submit '下書き保存', id: 'draftButton', name: 'draft', class: "draft-btn" %>
-          <%= f.submit '公開する', id: 'postButton', name: 'post', class: "submit-btn" %>
-      <% end %>
-    </div>
-<% end %>
+</div>

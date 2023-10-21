@@ -1,8 +1,18 @@
-<h4>作品編集</h4>
+<h5 class="text-center mt-5">作品編集</h5>
 <!-- フォーム -->
 <%= render 'user/books/form', book: @book %>
 <!-- 削除ボタン -->
-<% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+            <div class= "col-md-8">
+                <div class="mt-2">
+                <% if @book.user == current_user %>
+                    <%= link_to "削除", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                <% end %>
+                </div>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
         
