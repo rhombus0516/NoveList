@@ -20,11 +20,14 @@
             <% end %>
         </tr>
         <tr><% if user_signed_in? %>
-            <td id="favorite_buttons_<%= @book.id %>">
+            <td><i class="fa-solid fa-eye"></i><%= @book.view_counts.count %>
+                <div id="favorite_buttons_<%= @book.id %>">
                  <%= render "user/favorites/btn", book: @book %>
+                </div> 
             <% end %>
-            <td id="comment_count">
-                <%= render "user/book_comments/count", book: @book %>
+                <div id="comment_count">
+                    <%= render "user/book_comments/count", book: @book %>
+                </div>
             </td>
         </tr>
         <tr>

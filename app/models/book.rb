@@ -13,6 +13,9 @@ class Book < ApplicationRecord
     has_many :book_tag_relations, dependent: :destroy
     has_many :tags, through: :book_tag_relations, dependent: :destroy
     
+    #閲覧数
+    has_many :view_counts, dependent: :destroy
+    
     validates :title, presence: true, length: { in: 1..100 }
     validates :body, presence: true, length: { in: 1..100000 }
     
