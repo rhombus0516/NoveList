@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope module: :user do
   root to: "homes#top"
   get "search" => "searches#search"
+  
     resources :books, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resources :book_comments, only: [:create, :destroy] 
       resource :favorites, only: [:create, :destroy]
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
       end
       resource :relationships, only: [:create, :destroy]
     end
+    
+    resources :contacts, only: [:new, :create]
   end
   
   devise_scope :user do
