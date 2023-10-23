@@ -7,13 +7,13 @@ class User::ContactsController < ApplicationController
     def confirm
         @contact = Contact.new(contact_params)
         if @contact.invalid?
-            render :new
-        end    
+          render :new
+        end
     end
     
     def back
-    @contact = Contact.new(contact_params)
-    render :new
+        @contact = Contact.new(contact_params)
+        render :new
     end
     
     def create
@@ -28,15 +28,10 @@ class User::ContactsController < ApplicationController
     def done
     end
 
-    private    
+    private
     
-    def contact_params
-    params.require(:contact)
-          .permit(:email,
-                  :name,
-                  :subject,
-                  :message
-                 )
-    end
+        def contact_params
+            params.require(:contact).permit(:email, :name, :subject, :message)             
+        end
     end
 end
