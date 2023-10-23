@@ -38,11 +38,14 @@ class User::BooksController < ApplicationController
 
         if @book.save
             if @book.draft?
-                redirect_to book_path(@book.id), notice: '下書きが保存されました。'
+                flash.now[:notice] = "下書きが保存されました。"
+                redirect_to book_path(@book.id)
             else
+                flash.now[:notice] = "投稿が公開されました"
                 redirect_to books_path, notice: '投稿が公開されました'
             end
         else
+            flash.now[:notice] = "保存に失敗しました"
             render :new
         end
     end

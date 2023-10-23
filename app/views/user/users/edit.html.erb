@@ -3,7 +3,6 @@
     <div class="col-md-2"></div>
       <div class= "col-md-8">
         <h5>プロフィール編集</h5>
-        <%= flash[:notice] %>
         <%= form_with model: @user do |f| %>
           <label for="inputImage">写真を変更</label>
           <div><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></div> 
