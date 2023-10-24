@@ -8,21 +8,28 @@ class User::BooksController < ApplicationController
     def index
         @books = Book.all
         #タグ検索
-        @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
+        if params[:tag_id].present?
+        tag = Tag.find(params[:tag_id])
+        @books = tag.books
+        end
         #新規タグ作成
         if params[:tag]
          Tag.create(name: params[:tag])
         end
-        @books = Book.published.order(created_at: :desc)
+        
+    
+        @books = @books.published.order(created_at: :desc)
     end
 
     def show
         @book = Book.find(params[:id])
         @book_comment = BookComment.new
         @user = @book.user
-        unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
-            current_user.view_counts.create(book_id: @book.id)
-        end    
+        if user_signed_in?
+            unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+                current_user.view_counts.create(book_id: @book.id)
+            end
+        end
     end
 
     def edit

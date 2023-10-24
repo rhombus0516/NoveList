@@ -19,22 +19,28 @@
                 <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
             <% end %>
         </tr>
-        <tr><% if user_signed_in? %>
+        <tr>
+            <% if user_signed_in? %>
             <td><i class="fa-solid fa-eye"></i><%= @book.view_counts.count %>
                 <div id="favorite_buttons_<%= @book.id %>">
                  <%= render "user/favorites/btn", book: @book %>
-                </div> 
-            <% end %>
+                </div>
                 <div id="comment_count">
                     <%= render "user/book_comments/count", book: @book %>
                 </div>
             </td>
+            <% end %>
         </tr>
         <tr>
             <td><%= render "user/book_comments/form", book: @book, book_comment: @book_comment %></td>
             <td id="comment_index">
                 <%= render "user/book_comments/index", book: @book %>
             </td>
+        </tr>
+        <tr>
+            <% if admin_signed_in? %>
+                <td><%= link_to "削除する", book_path(@book), method: :delete, class: "btn-sm btn-danger" %></td>
+            <% end %>
         </tr>
     </tbody>
 </table>
