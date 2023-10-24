@@ -16,8 +16,6 @@ class User::BooksController < ApplicationController
         if params[:tag]
          Tag.create(name: params[:tag])
         end
-        
-    
         @books = @books.published.order(created_at: :desc)
     end
 
