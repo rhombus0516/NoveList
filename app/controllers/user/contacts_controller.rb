@@ -12,6 +12,10 @@ class User::ContactsController < ApplicationController
             render :confirm
         end
     end
+    
+    def confirmback
+        redirect_to new_contact_path
+    end
 
     def back
         @contact = Contact.new(contact_params)

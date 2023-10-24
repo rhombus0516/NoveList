@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "search" => "searches#search"
   
   resources :contacts, only: [:new, :create]
+  get 'contacts/confirm', to: 'contacts#confirmback', as: 'confirmback'
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
@@ -32,8 +33,7 @@ Rails.application.routes.draw do
       end
       resource :relationships, only: [:create, :destroy]
     end
-    
-    resources :contacts, only: [:new, :create]
+
   end
   
   devise_scope :user do
