@@ -18,13 +18,13 @@
             </tr>
           </tbody>
         </table>
-        <%= form_with(model: @contact, local: true) do |f| %>
+        <%= form_with(model: @contact, url: confirm_path) do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :message %>
           <div><%= f.submit '送信' %></div>
         <% end %>
-        <%= form_with(model: @contact, url: back_path, local: true) do |f| %>
+        <%= form_with(model: @contact, url: back_path) do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :message %>
