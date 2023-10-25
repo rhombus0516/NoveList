@@ -1,6 +1,6 @@
 <% if book.favorited_by?(current_user) %>
   <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
-    <i class="fa-solid fa-bookmark" aria-hidden="true" style="color: red;"></i>
+    <i class="fa-solid fa-bookmark" aria-hidden="true" style="color: red;" class="text-dark"></i>
     <%= book.favorites.count %>
   <% end %>
 <% else %>
