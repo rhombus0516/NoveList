@@ -8,7 +8,7 @@
             <div class= "col-md-8">
                 <div class="mt-2">
                 <% if @book.user == current_user %>
-                    <%= link_to "削除", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                    <%= link_to "削除", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
                 <% end %>
                 </div>
             </div>

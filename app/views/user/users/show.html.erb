@@ -37,7 +37,7 @@
                 </div>
                 <%= render 'user/books/index', book: @book %>
                 <% if @user == current_user %>
-                    <%= link_to "退会する", user_path(@user), method: :delete, class: "btn-sm btn-danger" %>
+                    <%= link_to "退会する", user_path(@user), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn-sm btn-danger" %>
                 <% end %>
             </div>
         <div class="col-md-2"></div>
