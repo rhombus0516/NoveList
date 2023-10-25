@@ -1,25 +1,16 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <a class="navbar-brand">
-      <%= link_to root_path, class: 'nav-link text-light' do %>
-        <%= image_tag 'logo.PNG', :size =>'250x40'%>
-      <% end %>
-    </a>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <!-- ユーザー側 -->
         <!-- ログイン済み -->
       <% if user_signed_in? %>
           <li class="nav-item">
-            <li class="nav-item">
             <%= link_to books_path, class: 'nav-link text-light' do %><i class="fa-solid fa-book"></i>
               本棚
             <% end %>
-            </li>
-            <li>
+          </li>
+            <li class="nav-item">
               <li><%= link_to liked_posts_user_path(current_user), class: 'nav-link text-light' do %><i class="fa-solid fa-book-bookmark"></i>
               ブックマーク
               <% end %></li>
@@ -73,5 +64,17 @@
         <%= render "user/searches/form" %>
       </div>
     </div>
+        </div>
+  </div>
+    <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <a class="navbar-brand">
+      <%= link_to root_path, class: 'position-center' do %>
+        <%= image_tag 'logo.PNG', :size =>'250x50'%>
+      <% end %>
+    </a>
   </nav>
+</div>
 </header>
