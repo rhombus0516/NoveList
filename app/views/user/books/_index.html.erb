@@ -14,8 +14,6 @@
                         <% if user_signed_in? %>
                             <td id= "favorite_buttons_<%= book.id %>">
                                 <%= render "user/favorites/btn", book: book %></td>
-                        <% end %>
-                        <% if user_signed_in? %>
                             <td id="comment_count">
                                 <%= render "user/book_comments/count", book: book %>
                             </td>

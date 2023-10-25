@@ -1,46 +1,61 @@
-<table>
-    <tbody>
-        <tr>
-            <td><%= image_tag @book.get_image(100,100) %></td>
-            <td><%= @book.title %></td>
-            <td><%= link_to user_path(@user) do %>
-                <%= @user.name %>
+<div class="container mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><%= image_tag @book.get_image(100,100) %></td>
+                            <td><%= @book.title %></td>
+                            <td><%= link_to user_path(@user) do %>
+                                <%= @user.name %>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <% @book.tags.each do |tag| %>
+                            <td><%= tag.name %></td>
+                        <% end %>
+                        <tr><!-- 編集ボタン -->
+                            <% if @book.user == current_user %>
+                                <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
+                            <% end %>
+                        </tr>
+                        <tr>
+                            <% if user_signed_in? %>
+                            <td class="col-4">
+                                <i class="fa-solid fa-eye"></i>
+                                <%= @book.view_counts.count %>
+                            </td>
+                            <td class="col-4">
+                                <div id="favorite_buttons_<%= @book.id %>">
+                                 <%= render "user/favorites/btn", book: @book %>
+                                </div>
+                            </td>
+                            <td class="col-4">
+                                <div id="comment_count">
+                                    <%= render "user/book_comments/count", book: @book %>
+                                </div>
+                            </td>
+                            <% end %>
+                        </tr>
+                        <tr>
+                    </tbody>
+                </table>
+                <div class="text-break w-100 mt-3 mb-3">
+                    <%= @book.body %>
+                </div>
+                <div>
+                    <%= render "user/book_comments/form", book: @book, book_comment: @book_comment %>
+                </div>
+                <div id="comment_index">
+                    <%= render "user/book_comments/index", book: @book %>
+                </div>
+                <% if admin_signed_in? %>
+                    <div>
+                        <%= link_to "削除する", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                    </div>
                 <% end %>
-            </td>
-        </tr>
-        <tr>
-            <td><%= @book.body %></td>
-        </tr>
-        <% @book.tags.each do |tag| %>
-            <td><%= tag.name %></td>
-        <% end %>
-        <tr><!-- 編集ボタン -->
-            <% if @book.user == current_user %>
-                <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
-            <% end %>
-        </tr>
-        <tr>
-            <% if user_signed_in? %>
-            <td><i class="fa-solid fa-eye"></i><%= @book.view_counts.count %>
-                <div id="favorite_buttons_<%= @book.id %>">
-                 <%= render "user/favorites/btn", book: @book %>
-                </div>
-                <div id="comment_count">
-                    <%= render "user/book_comments/count", book: @book %>
-                </div>
-            </td>
-            <% end %>
-        </tr>
-        <tr>
-            <td><%= render "user/book_comments/form", book: @book, book_comment: @book_comment %></td>
-            <td id="comment_index">
-                <%= render "user/book_comments/index", book: @book %>
-            </td>
-        </tr>
-        <tr>
-            <% if admin_signed_in? %>
-                <td><%= link_to "削除する", book_path(@book), method: :delete, class: "btn-sm btn-danger" %></td>
-            <% end %>
-        </tr>
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+</div>    
