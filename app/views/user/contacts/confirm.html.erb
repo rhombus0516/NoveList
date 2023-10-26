@@ -5,31 +5,37 @@
         <table>
           <tbody>
             <tr>
-              <td class="text-center" style="width: 30%;">お名前</td>
+              <td style="width: 30%;">お名前</td>
               <td><%= @contact.name %></td>
             </tr>
             <tr>
-              <td class="text-center">メールアドレス</td>
+              <td>メールアドレス</td>
               <td style="white-space: pre-wrap;"><%= @contact.email %></td>
             </tr>
             <tr>
-              <td class="text-center">メッセージ</td>
+              <td>メッセージ</td>
               <td style="white-space: pre-wrap;"><%= @contact.message %></td>
             </tr>
           </tbody>
         </table>
+        <table>
+          <tr>
         <%= form_with(model: @contact, url: contacts_path) do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :message %>
-          <div><%= f.submit '送信' %></div>
+          <div><%= f.submit '送信', class: "btn-sm btn-primary" %></div>
         <% end %>
+        </tr>
+        <tr>
         <%= form_with(model: @contact, url: back_path) do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :message %>
-          <div><%= f.submit '入力画面に戻る' %></div>
+          <div><%= f.submit '入力画面に戻る', class: "btn-sm btn-success" %></div>
         <% end %>
+        </tr>
+        </table>
       </div>
     <div class="col-2"></div>
   </div>
