@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   #コメント
   has_many :book_comments, dependent: :destroy
-  
+
   #閲覧数
   has_many :view_counts, dependent: :destroy
 

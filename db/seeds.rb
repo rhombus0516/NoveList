@@ -6,14 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Tag.create([
-    { name: 'ホラー' },
-    { name: 'ファンタジー' },
-    { name: 'コメディー'},
-    { name: 'その他'}
-    ])
-    
-Admin.create!(
-   email: 'test@test.com',
-   password: '123456'
-)    
+# 取得または登録したインスタンス = モデル.find_or_create_by!(検索キー: 検索する値) do |ブロック変数|
+#   ブロック変数.属性 = 登録する値
+#   :
+#   :
+# end
+
+Tag.find_or_create_by!(name: "ホラー")
+
+Tag.find_or_create_by!(name: "ファンタジー")
+
+Tag.find_or_create_by!(name: "コメディー")
+
+Tag.find_or_create_by!(name: "その他")   
+
+Admin.find_or_create_by!(email: "admin@test.com") do |admin|
+   admin.password = '123456'
+end
