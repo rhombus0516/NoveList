@@ -61,6 +61,7 @@ class User::BooksController < ApplicationController
     def destroy
         book = Book.find(params[:id])
         book.destroy
+        flash[:notice] = "投稿が消去されました"
         redirect_to books_path
     end
 

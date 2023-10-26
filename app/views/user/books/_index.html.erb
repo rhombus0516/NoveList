@@ -10,7 +10,7 @@
                             <%= image_tag book.get_image(100,100) %>
                             <% end %></td>
                         <td><%= link_to book.title, book_path(book.id), class: "text-dark" %></td>
-                        <td><%= book.user.name %></td>
+                        <td><%= link_to book.user.name, user_path(book.user.id),  class: "text-dark" %></td>
                         <% if user_signed_in? %>
                             <td id= "favorite_buttons_<%= book.id %>">
                                 <%= render "user/favorites/btn", book: book %></td>
