@@ -20,6 +20,8 @@ Tag.find_or_create_by!(name: "コメディー")
 
 Tag.find_or_create_by!(name: "その他")   
 
-Admin.find_or_create_by!(email: "admin@test.com") do |admin|
-   admin.password = '123456'
-end
+unless Rails.env.production?
+    Admin.find_or_create_by!(email: "admin@test.com") do |admin|
+       admin.password = '123456'
+    end
+e    
