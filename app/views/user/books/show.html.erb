@@ -8,38 +8,39 @@
                             <td><%= image_tag @book.get_image(100,100) %></td>
                             <td class="font-weight-bold"><%= @book.title %></td>
                             <td>投稿者
-                                <%= link_to user_path(@user) do %>
+                                <%= link_to user_path(@user), class: "text-dark" do %>
                                     <%= @user.name %>
                                 <% end %>
                             </td>
                         </tr>
-                        <% @book.tags.each do |tag| %>
-                            <td>#<%= tag.name %></td>
-                        <% end %>
+                        <tr>
+                            <% @book.tags.each do |tag| %>
+                                <td>#<%= tag.name %></td>
+                            <% end %>
+                        </tr>    
+                        <tr>
+                            <% if user_signed_in? %>
+                                <td class="col-4">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <%= @book.view_counts.count %>
+                                </td>
+                                <td class="col-4">
+                                    <div id="favorite_buttons_<%= @book.id %>">
+                                     <%= render "user/favorites/btn", book: @book %>
+                                    </div>
+                                </td>
+                                <td class="col-4">
+                                    <div id="comment_count">
+                                        <%= render "user/book_comments/count", book: @book %>
+                                    </div>
+                                </td>
+                            <% end %>
+                        </tr>
                         <tr><!-- 編集ボタン -->
                             <% if @book.user == current_user %>
                                 <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
                             <% end %>
                         </tr>
-                        <tr>
-                            <% if user_signed_in? %>
-                            <td class="col-4">
-                                <i class="fa-solid fa-eye"></i>
-                                <%= @book.view_counts.count %>
-                            </td>
-                            <td class="col-4">
-                                <div id="favorite_buttons_<%= @book.id %>">
-                                 <%= render "user/favorites/btn", book: @book %>
-                                </div>
-                            </td>
-                            <td class="col-4">
-                                <div id="comment_count">
-                                    <%= render "user/book_comments/count", book: @book %>
-                                </div>
-                            </td>
-                            <% end %>
-                        </tr>
-                        <tr>
                     </tbody>
                 </table>
                 <div class="text-break w-100 mt-3 mb-3">

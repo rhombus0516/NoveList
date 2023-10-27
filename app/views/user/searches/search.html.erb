@@ -2,12 +2,11 @@
     <div class="row">
         <table class="table  table-hover table-inverse">
             <% if @range == "User" %>
-                <h3 class="card-title mb-4 mt-1">ユーザー検索結果</h3>
+                <h4 class="card-title mt-4 mb-4 mt-1">ユーザー検索結果</h4>
                 <thead>
                     <tr>
-                        <th>image</th>
-                        <th>name</th>
-                        <th colspan="3"></th>
+                        <th></th>
+                        <th>名前</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,20 +15,22 @@
                             <td><%= link_to user_path(user) do %>
                                     <%= image_tag user.get_profile_image(100,100), alt: "hoge" %>
                                 <% end %></td>
-                            <td><%= user.name %></td>
+                            <td><%= link_to user_path(user), class: "text-dark" do %>
+                                    <%= user.name %>
+                                <% end %>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>
             <% else %>
-                <h3 class="card-title mb-4 mt-1">本の検索結果</h3>
+                <h4 class="card-title mt-4 mb-4 mt-1">本の検索結果</h4>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Title</th>
-                        <th>Opinion</th>
+                        <th>タイトル</th>
+                        <th>ユーザ－</th>
                         <th></th>
                         <th></th>
-                        <th colspan="3"></th>
                     </tr>
                 </thead>
                 <tbody>
