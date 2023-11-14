@@ -11,7 +11,7 @@
                             <% end %></td>
                         <td><%= link_to book.title, book_path(book.id), class: "text-dark" %></td>
                         <td><%= link_to book.user.name, user_path(book.user.id),  class: "text-dark" %></td>
-                        <td><span class="count" id="count_title">0文字</span></td>
+                        <td><span class="count" id="count_text">0文字</span></td>
                         <% if user_signed_in? %>
                             <td id= "favorite_buttons_<%= book.id %>">
                                 <%= render "user/favorites/btn", book: book %></td>
