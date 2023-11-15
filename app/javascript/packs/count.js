@@ -1,7 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  console.log(1)
   function count() {
-  console.log(2)
   const bookText = document.getElementById('book_text');
   bookText.addEventListener("keyup", () => {
     let bookLength = bookText.value.length;
