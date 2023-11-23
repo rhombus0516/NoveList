@@ -2,7 +2,7 @@ class User::BooksController < ApplicationController
     before_action :is_matching_login_user, only: [:edit,:update]
 
     def new
-        @book = Book.new
+        @book = Book.new(body: '')
     end
 
     def index
