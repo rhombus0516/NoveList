@@ -15,6 +15,7 @@
     </tr>
     <tr>
       <td><%= book_comment.comment %></td>
+      <td><%= book_comment.created_at.strftime('%Y/%m/%d') %></td>
       <td>
         <% if book_comment.user == current_user %>
           <%= link_to "削除", book_book_comment_path(book, book_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true, "data-confirm" => "本当に削除しますか？" %>

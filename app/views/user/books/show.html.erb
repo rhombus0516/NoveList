@@ -34,8 +34,10 @@
                                         <%= render "user/book_comments/count", book: @book %>
                                     </div>
                                 </td>
+                                <td>
+                                    <%= @book.created_at.strftime('%Y/%m/%d') %>
+                                </td>
                             <% end %>
-                        </tr>
                         <tr><!-- 編集ボタン -->
                             <% if @book.user == current_user %>
                                 <td><%= link_to "編集する", edit_book_path(@book.id), class: "btn-sm btn-success"  %></td>
