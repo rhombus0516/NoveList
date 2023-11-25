@@ -14,7 +14,7 @@
                     <h6>タイトル*</h6>
                         <%= f.text_field :title, placeholder: "タイトルを入力", size: "94" %>
                     <h6>本文*</h6>
-                    <span class="count" id="count_text"><%= book.body.length %>文字</span>
+                    <span class="count" id="count_text"><%= @book.body.length %>文字</span>
                         <%= f.text_area :body, id: "book_text",placeholder: "本文",  class: "w-100 vh-100" %>
                     <h6>表紙画像</h6>
                         <%= f.file_field :image, accept: "image/*" %>
