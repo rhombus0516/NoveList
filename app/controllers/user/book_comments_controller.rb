@@ -10,6 +10,7 @@ class User::BookCommentsController < ApplicationController
   def destroy
     @comment = BookComment.find(params[:id])
     @comment.destroy
+    flash[:notice] = "コメントが消去されました"
   end
 
   private
