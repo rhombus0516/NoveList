@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :book, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   validates :name, presence: true,length: { in: 1..10 }
   validates :introduction, length: { maximum: 100 }
@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   #いいね
   has_many :favorites, dependent: :destroy
-  has_many :books, through: :favorites
-
+  has_many :favorite_books, through: :favorites,source: 'book'
+  
   #コメント
   has_many :book_comments, dependent: :destroy
 

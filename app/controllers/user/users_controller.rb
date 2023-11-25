@@ -11,7 +11,7 @@ class User::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @books = @user.book
+        @books = @user.books
         @following_users = @user.following_users
         @follower_users = @user.follower_users
     end
