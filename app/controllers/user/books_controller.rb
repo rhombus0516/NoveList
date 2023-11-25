@@ -28,6 +28,9 @@ class User::BooksController < ApplicationController
                 current_user.view_counts.create(book_id: @book.id)
             end
         end
+        if !@book.published? && @book.user.id != current_user.id
+            redirect_to books_path
+        end
     end
 
     def edit
