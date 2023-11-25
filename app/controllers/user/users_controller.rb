@@ -11,7 +11,11 @@ class User::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @books = @user.books
+        if @user == current_user
+            @books = @user.books
+        else
+            @books = @user.books.published
+        end    
         @following_users = @user.following_users
         @follower_users = @user.follower_users
     end
