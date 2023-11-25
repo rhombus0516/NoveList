@@ -1,10 +1,10 @@
-  ja:
-    enums:
-        book:
-            status:
-                published: "公開中"
-                draft: "下書き"
-                unpublished: "非公開"
+ ja:
+  enums:
+    book:
+      status:
+        published: "公開中"
+        draft: "下書き"
+        unpublished: "非公開"
   activerecord:
     errors:
       messages:
@@ -12,7 +12,7 @@
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-date:
+  date:
     abbr_day_names:
     - 日
     - 月
@@ -22,7 +22,7 @@ date:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -48,7 +48,7 @@ date:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -151,38 +151,38 @@ date:
           quadrillion: 千兆
           thousand: 千
           trillion: 兆
-          unit: ''      
-        format:
-            delimiter: ''
-            precision: 3
-            significant: true
-            strip_insignificant_zeros: true
-          storage_units:
-            format: "%n%u"
-            units:
-              byte: バイト
-              eb: EB
-              gb: GB
-              kb: KB
-              mb: MB
-              pb: PB
-              tb: TB
-        percentage:
-          format:
-            delimiter: ''
-            format: "%n%"
-        precision:
-          format:
-            delimiter: ''
-      support:
-        array:
-          last_word_connector: "、"
-          two_words_connector: "、"
-          words_connector: "、"
-      time:
-        am: 午前
-        formats:
-          default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-          long: "%Y/%m/%d %H:%M"
-          short: "%m/%d %H:%M"
-        pm: 午後 
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: バイト
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: "、"
+      two_words_connector: "、"
+      words_connector: "、"
+  time:
+    am: 午前
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"
+    pm: 午後
