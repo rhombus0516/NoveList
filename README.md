@@ -22,7 +22,9 @@
 ## 設計書
 ・テーブル定義書
 https://docs.google.com/spreadsheets/d/1Pbc68OdtPLBVCRlQb1Glx_ihpMyNt3pM/edit?usp=sharing&ouid=106156171031969061241&rtpof=true&sd=true
-​
+・詳細設計書
+https://docs.google.com/spreadsheets/d/1GI7JAi2TYHDpNuxSmbVddyB41a4QgMrSTN1a3vVgOu4/edit?usp=sharing​
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
