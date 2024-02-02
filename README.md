@@ -20,7 +20,8 @@
 ・小説を投稿したい人
 ​
 ## 設計書
-後ほど作成予定
+・テーブル定義書
+https://docs.google.com/spreadsheets/d/1Pbc68OdtPLBVCRlQb1Glx_ihpMyNt3pM/edit?usp=sharing&ouid=106156171031969061241&rtpof=true&sd=true
 ​
 ## 開発環境
 - OS：Linux(CentOS)
