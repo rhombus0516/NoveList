@@ -1,7 +1,30 @@
-<div class="container mt-3 mb-">
+<div class="container mt-3 mb-3">
   <div class="row">
-      <h5>ブックマーク一覧</h5>
-      <%= render "user/books/index", book: @book %>
-      </div>
+    <h5>ブックマーク一覧</h5>
+    <table class="table table-striped">
+      <tbody>
+        <% @liked_posts.each do |liked_post| %>
+          <tr>
+            <td>
+              <%= link_to book_path(liked_post) do %>
+                <%= image_tag liked_post.get_image(100, 100) %>
+              <% end %>
+            </td>
+            <td><%= link_to liked_post.title, book_path(liked_post), class: "text-dark" %></td>
+            <td><%= link_to liked_post.user.name, user_path(liked_post.user), class: "text-dark" %></td>
+            <td><span class="count" id="count_text"><%= liked_post.body.length %>文字</span></td>
+            <% if user_signed_in? %>
+              <td id="favorite_buttons_<%= liked_post.id %>">
+                <%= render "user/favorites/btn", book: liked_post %>
+              </td>
+              <td id="comment_count">
+                <%= render "user/book_comments/count", book: liked_post %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
+

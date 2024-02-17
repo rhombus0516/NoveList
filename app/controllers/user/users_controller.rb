@@ -53,8 +53,7 @@ class User::UsersController < ApplicationController
 
 
     def liked_posts
-        @liked_posts = Book.liked_posts(current_user)
-        @books = current_user.books
+        @liked_posts = current_user.favorites.includes(:book).map(&:book)
     end
 
       private
